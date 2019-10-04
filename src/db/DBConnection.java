@@ -4,7 +4,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 
 public class DBConnection {	
@@ -41,6 +43,26 @@ public class DBConnection {
 			return properties;
 		} catch (IOException e) {
 			throw new DBException(e.getMessage());
+		}
+	}
+	
+	public static void closeStatement(Statement statement) {
+		if (statement != null) {
+			try {
+				statement.close();
+			} catch (SQLException e) {
+				throw new DBException(e.getMessage());
+			}
+		}
+	}
+	
+	public static void closeResultset(ResultSet resultset) {
+		if (resultset != null) {
+			try {
+				resultset.close();
+			} catch (SQLException e) {
+				throw new DBException(e.getMessage());
+			}
 		}
 	}
 
