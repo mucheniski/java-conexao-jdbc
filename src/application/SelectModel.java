@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import db.DBConnection;
 
-public class Program {
+public class SelectModel {
 
 	public static void main(String[] args) {
 		
